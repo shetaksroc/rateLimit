@@ -1,4 +1,4 @@
-package com.example.ratelimit.controller;
+package com.example.ratelimit.entity;
 
 import lombok.Getter;
 import lombok.Setter;

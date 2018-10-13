@@ -14,4 +14,12 @@ public class RateLimitEntity {
         this.requestTime = requestTime;
         this.bucket = bucket;
     }
+
+    @Override
+    public String toString() {
+        return "RateLimitEntity{" +
+                "requestTime=" + requestTime +
+                ", bucket=" + bucket +
+                '}';
+    }
 }

@@ -1,5 +1,6 @@
-package com.example.ratelimit.controller;
+package com.example.ratelimit.dao;
 
+import com.example.ratelimit.entity.HotelInfo;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
@@ -10,6 +11,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.example.ratelimit.constants.RateLimiterConstants.HOTELS_DATA;
+
 @Component
 @Getter
 @Setter
@@ -19,7 +22,8 @@ public class HotelsDao {
 
     public HotelsDao() throws IOException {
         hotels=new HashMap<>();
-        File file=new File("/Users/boomerang/tutorials_and_courses/ratelimit/src/main/resources/hoteldb.csv");
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file=new File(classLoader.getResource(HOTELS_DATA).getFile());
         BufferedReader br=new BufferedReader(new FileReader(file));
         br.readLine();
         String line=null;
