@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.*;
 
+import static com.example.ratelimit.constants.RateLimiterConstants.SUSPEND_TIME;
+
 @RestController
 @ComponentScan("com.example.*")
 public class ApiController {
@@ -30,7 +32,7 @@ public class ApiController {
         LOG.info("CityId {}, Ordering {}, API Key {}",cityId,order,apiKey);
 
         if(rateLimitService.getSuspendMap().containsKey(apiKey) && !rateLimitService.isSuspendTimeElapsed(apiKey)){
-            return "API key suspended for 5 mins";
+            return String.format("API key suspended for %s mins",(SUSPEND_TIME/(1000*60)));
         }else if(rateLimitService.getSuspendMap().containsKey(apiKey) && rateLimitService.isSuspendTimeElapsed(apiKey)){
             rateLimitService.getSuspendMap().remove(apiKey);
         }
