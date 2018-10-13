@@ -22,9 +22,9 @@ public class HotelsDao {
 
     public HotelsDao() throws IOException {
         hotels=new HashMap<>();
-        ClassLoader classLoader = getClass().getClassLoader();
-        File file=new File(classLoader.getResource(HOTELS_DATA).getFile());
-        BufferedReader br=new BufferedReader(new FileReader(file));
+        InputStream inputStream=getClass().getClassLoader().getResourceAsStream(HOTELS_DATA);
+        InputStreamReader streamReader = new InputStreamReader(inputStream);
+        BufferedReader br=new BufferedReader(streamReader);
         br.readLine();
         String line=null;
         while ((line=br.readLine()) != null){

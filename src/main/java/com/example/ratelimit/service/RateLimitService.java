@@ -31,8 +31,7 @@ public class RateLimitService {
     public RateLimitService() throws IOException {
         suspendMap=new HashMap<>();
         rateLimiter=new HashMap<>();
-        ClassLoader classLoader = getClass().getClassLoader();
-        InputStream input = new FileInputStream(classLoader.getResource(API_REQUEST_LIMIT_PROPS).getFile());
+        InputStream input = getClass().getClassLoader().getResourceAsStream(API_REQUEST_LIMIT_PROPS);
         props.load(input);
     }
 
