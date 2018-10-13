@@ -5,6 +5,7 @@ Assumptions:
 2. Default suspend time :  1 min.
 
 How to run the application?
+mvn clean package
 java -jar target/ratelimit-1.0-SNAPSHOT.jar
 
 Mandatory Props:
